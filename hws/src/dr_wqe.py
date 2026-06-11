@@ -146,6 +146,28 @@ class dr_action_verify(ABC):
             return dr_action_verify_psp_dec()
         elif action_type == DR_ACTION_TRAILER:
             return dr_action_verify_trailer()
+        elif action_type == DR_ACTION_PACKET_OP:
+            return dr_action_verify_packet_op()
+        elif action_type == DR_ACTION_GEN_CQE:
+            return dr_action_verify_gen_cqe()
+        elif action_type == DR_ACTION_FIELD_XOR_FIELD:
+            return dr_action_verify_field_xor_field()
+        elif action_type == DR_ACTION_FIELD_SUB_FIELD:
+            return dr_action_verify_field_sub_field()
+        elif action_type == DR_ACTION_FIELD_AND_FIELD:
+            return dr_action_verify_field_and_field()
+        elif action_type == DR_ACTION_FIELD_FFS:
+            return dr_action_verify_field_ffs()
+        elif action_type == DR_ACTION_RIA:
+            return dr_action_verify_ria()
+        elif action_type == DR_ACTION_JUMP_TO_FDB_RX:
+            return dr_action_verify_jump_to_fdb_rx()
+        elif action_type == DR_ACTION_JUMP_TO_QP:
+            return dr_action_verify_jump_to_qp()
+        elif action_type == DR_ACTION_NISP_DECRYPT_W_KEY:
+            return dr_action_verify_nisp_decrypt_w_key()
+        elif action_type == DR_ACTION_PREP_PASO:
+            return dr_action_verify_prep_paso()
         elif action_type == DR_ACTION_ADD_FIELD:
             return dr_action_verify_add_field()
         elif action_type == DR_ACTION_JUMP_TO_STE_TABLE:
@@ -326,6 +348,72 @@ class dr_action_verify_trailer(dr_action_verify):
     """Verify TRAILER action"""
     def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
         """Verify TRAILER action"""
+        return True
+
+class dr_action_verify_packet_op(dr_action_verify):
+    """Verify PACKET_OP action (offset {5,6,7} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify PACKET_OP action"""
+        return True
+
+class dr_action_verify_gen_cqe(dr_action_verify):
+    """Verify GEN_CQE action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify GEN_CQE action"""
+        return True
+
+class dr_action_verify_field_xor_field(dr_action_verify):
+    """Verify FIELD_XOR_FIELD action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify FIELD_XOR_FIELD action"""
+        return True
+
+class dr_action_verify_field_sub_field(dr_action_verify):
+    """Verify FIELD_SUB_FIELD action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify FIELD_SUB_FIELD action"""
+        return True
+
+class dr_action_verify_field_and_field(dr_action_verify):
+    """Verify FIELD_AND_FIELD action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify FIELD_AND_FIELD action"""
+        return True
+
+class dr_action_verify_field_ffs(dr_action_verify):
+    """Verify FIELD_FFS action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify FIELD_FFS action"""
+        return True
+
+class dr_action_verify_ria(dr_action_verify):
+    """Verify RIA action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify RIA action"""
+        return True
+
+class dr_action_verify_jump_to_fdb_rx(dr_action_verify):
+    """Verify JUMP_TO_FDB_RX action (offset {3} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify JUMP_TO_FDB_RX action"""
+        return True
+
+class dr_action_verify_jump_to_qp(dr_action_verify):
+    """Verify JUMP_TO_QP action (offset {3} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify JUMP_TO_QP action"""
+        return True
+
+class dr_action_verify_nisp_decrypt_w_key(dr_action_verify):
+    """Verify NISP_DECRYPT_W_KEY action (offset {5} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify NISP_DECRYPT_W_KEY action"""
+        return True
+
+class dr_action_verify_prep_paso(dr_action_verify):
+    """Verify PREP_PASO action (offset {5,6} validated generically)"""
+    def verify_action(self, action_data: List[int], dump_lines: DumpLines, line_index: int) -> bool:
+        """Verify PREP_PASO action"""
         return True
 
 class dr_wqe(ABC):

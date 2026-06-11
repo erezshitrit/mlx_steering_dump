@@ -162,7 +162,13 @@ DR_ACTION_ADD_FIELD = 0x1b
 DR_ACTION_PSP_ENC = 0x1f
 DR_ACTION_PSP_DEC = 0x20
 DR_ACTION_ASO_32 = 0x23
+DR_ACTION_PACKET_OP = 0x27
 DR_ACTION_GEN_CQE = 0x28
+DR_ACTION_FIELD_XOR_FIELD = 0x2a
+DR_ACTION_FIELD_SUB_FIELD = 0x2b
+DR_ACTION_FIELD_AND_FIELD = 0x2c
+DR_ACTION_FIELD_FFS = 0x2d
+DR_ACTION_RIA = 0x31
 DR_ACTION_JUMP_TO_STE_TABLE = 0x80
 DR_ACTION_JUMP_TO_TIR = 0x81
 DR_ACTION_JUMP_TO_FLOW_TABLE = 0x82
@@ -170,6 +176,10 @@ DR_ACTION_JUMP_TO_DROP = 0x83
 DR_ACTION_JUMP_TO_ALLOW = 0x84
 DR_ACTION_JUMP_TO_VPORT = 0x85
 DR_ACTION_JUMP_TO_UPLINK = 0x86
+DR_ACTION_JUMP_TO_FDB_RX = 0x87
+DR_ACTION_JUMP_TO_QP = 0x88
+DR_ACTION_NISP_DECRYPT_W_KEY = 0xA1
+DR_ACTION_PREP_PASO = 0xA2
 
 
 stc_action_type_info = {
@@ -191,6 +201,13 @@ stc_action_type_info = {
     DR_ACTION_ADD_FIELD: ("FIELD_ADD_TO_FIELD", 2, [0xffffffff, 0xffffffff],[5,6]),
     DR_ACTION_PSP_ENC: ("PSP_ENCRYPT", 3, [0xffffffff, 0x0, 0x0],[5,6]),
     DR_ACTION_PSP_DEC: ("PSP_DECRYPT", 3, [0xffffffff, 0x0, 0x0],[5,6]),
+    DR_ACTION_PACKET_OP: ("PACKET_OP", 1, [0xffffffff],[5,6,7]),
+    DR_ACTION_GEN_CQE: ("GEN_CQE", 2, [0xffffffff, 0xffffffff],[5,6]),
+    DR_ACTION_FIELD_XOR_FIELD: ("FIELD_XOR_FIELD", 2, [0xffffffff, 0xffffffff],[5,6]),
+    DR_ACTION_FIELD_SUB_FIELD: ("FIELD_SUB_FIELD", 2, [0xffffffff, 0xffffffff],[5,6]),
+    DR_ACTION_FIELD_AND_FIELD: ("FIELD_AND_FIELD", 2, [0xffffffff, 0xffffffff],[5,6]),
+    DR_ACTION_FIELD_FFS: ("FIELD_FFS", 2, [0xffffffff, 0xffffffff],[5,6]),
+    DR_ACTION_RIA: ("RIA", 2, [0xffffffff, 0xffffffff],[5,6]),
     DR_ACTION_JUMP_TO_STE_TABLE: ("JUMP_TO_STE_TABLE", 1, [0xffffffff],[3]),
     DR_ACTION_JUMP_TO_TIR: ("TIR", 1, [0xffffffff],[3]),
     DR_ACTION_JUMP_TO_FLOW_TABLE: ("GOTO_TO_FLOW_TABLE", 1, [0xffffffff],[3]),
@@ -198,6 +215,10 @@ stc_action_type_info = {
     DR_ACTION_JUMP_TO_ALLOW: ("JUMP_TO_ALLOW", 1, [0xffffffff],[3]),
     DR_ACTION_JUMP_TO_VPORT: ("GOTO_TO_VPORT", 1, [0xffffffff],[3]),
     DR_ACTION_JUMP_TO_UPLINK: ("GOTO_TO_UPLINK", 1, [0xffffffff],[3]),
+    DR_ACTION_JUMP_TO_FDB_RX: ("JUMP_TO_FDB_RX", 1, [0xffffffff],[3]),
+    DR_ACTION_JUMP_TO_QP: ("JUMP_TO_QP", 1, [0xffffffff],[3]),
+    DR_ACTION_NISP_DECRYPT_W_KEY: ("NISP_DECRYPT_W_KEY", 3, [0xffffffff, 0x0, 0x0],[5]),
+    DR_ACTION_PREP_PASO: ("PREP_PASO", 2, [0xffffffff, 0xffffffff],[5,6]),
 }
 
 def hex_to_bin_str(_n, _len):
